@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vamshi Aitharaju — Data Analyst</title>
+  <meta name="description" content="Vamshi Aitharaju — Data Analyst specializing in fraud &amp; risk analytics, Power BI, Python and Excel. Four fully-documented, end-to-end analytics projects." />
+  <meta name="author" content="Vamshi Aitharaju" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vamshi Aitharaju — Data Analyst" />
+  <meta property="og:description" content="Fraud &amp; risk analytics, Power BI, Python and Excel. Real projects, taken from raw data to finished dashboard." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F1419'/%3E%3Cpolyline points='18,70 38,50 55,58 82,26' fill='none' stroke='%23F5A623' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#top" class="nav__brand">
+        <span class="nav__brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" width="26" height="26">
+            <polyline points="14,72 38,48 56,58 86,22" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="nav__brand-text">Vamshi Aitharaju</span>
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact" class="nav__cta">Contact</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinksMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav__mobile" id="navLinksMobile" aria-label="Mobile">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <svg class="hero__band" viewBox="0 0 1200 600" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="bandGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.16" />
+              <stop offset="100%" stop-color="var(--accent)" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <path class="hero__band-path" d="M0,360 C150,300 300,340 450,300 C600,260 750,320 900,280 C1050,240 1150,300 1200,270 L1200,600 L0,600 Z" fill="url(#bandGrad)" />
+        </svg>
+      </div>
+
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="hero__eyebrow">
+            <span class="status-dot" aria-hidden="true"></span>
+            Phoenix, AZ · Open to relocation
+          </p>
+          <h1 class="hero__name">Vamshi Aitharaju</h1>
+          <p class="hero__title">
+            Data Analyst <span class="sep">|</span> Fraud &amp; Risk Analytics
+            <span class="sep">|</span> <span class="mono">Power BI, Python &amp; Excel</span>
+          </p>
+          <p class="hero__tagline" id="tagline" aria-label="I turn messy, high-volume data into clear, decision-ready findings, from fraud investigation at Google-managed programs to independent analytics projects built end-to-end.">
+            <span class="hero__tagline-text" id="taglineText"></span><span class="hero__cursor" id="taglineCursor" aria-hidden="true"></span>
+          </p>
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">View Projects</a>
+            <a href="#contact" class="btn btn--ghost">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="hero__chart">
+          <div class="chartcard">
+            <div class="chartcard__head">
+              <div class="chartcard__titles">
+                <p class="chartcard__title">NYC Pollution Trend</p>
+                <p class="chartcard__sub" id="chartSub">Annual average · 2009–2023 · µg/m³</p>
+              </div>
+              <div class="seg" role="tablist" aria-label="Season view">
+                <button class="seg__btn is-active" role="tab" aria-selected="true" data-season="annual">Annual</button>
+                <button class="seg__btn" role="tab" aria-selected="false" data-season="winter">Winter</button>
+                <button class="seg__btn" role="tab" aria-selected="false" data-season="summer">Summer</button>
+              </div>
+            </div>
+            <div class="chartcard__plot">
+              <svg id="heroChart" viewBox="0 0 640 340" role="img" aria-labelledby="heroChartTitle heroChartDesc" preserveAspectRatio="xMidYMid meet">
+                <title id="heroChartTitle">NYC air quality pollution trend, 2009 to 2023</title>
+                <desc id="heroChartDesc">Line chart recreated from the real NYC Department of Health dataset, showing nitrogen dioxide and fine-particle concentrations declining over fifteen years.</desc>
+              </svg>
+            </div>
+            <div class="chartcard__legend" id="chartLegend"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Stats band ===== -->
+    <section class="stats" id="stats" aria-label="Career highlights by the numbers">
+      <div class="stats__inner">
+        <div class="stat">
+          <span class="stat__num mono" data-count="15000" data-suffix="+" data-format="comma">0</span>
+          <span class="stat__label">Fraud accounts reviewed<br/><span class="stat__meta">over 12 months</span></span>
+        </div>
+        <div class="stat">
+          <span class="stat__num mono" data-count="64" data-suffix="%">0</span>
+          <span class="stat__label">Revenue from women's apparel<br/><span class="stat__meta">Vrinda Store analysis</span></span>
+        </div>
+        <div class="stat">
+          <span class="stat__num mono" data-prefix="R² = " data-count="0.78" data-decimals="2">0</span>
+          <span class="stat__label">Best model fit<br/><span class="stat__meta">Decision Tree, NYC air quality</span></span>
+        </div>
+        <div class="stat">
+          <span class="stat__num mono" data-count="53.76" data-suffix="%" data-decimals="2">0</span>
+          <span class="stat__label">Profit from basic drinks<br/><span class="stat__meta">Coffee shop KPI dashboard</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== About ===== -->
+    <section class="section about reveal" id="about">
+      <div class="section__head">
+        <span class="section__kicker mono">01 / About</span>
+        <h2 class="section__title">Rigor from fraud investigation, applied to data analysis</h2>
+      </div>
+      <div class="about__grid">
+        <div class="about__body">
+          <p>For two years, I investigated fraud inside a Google-managed trust &amp; safety program, reviewing an average of <strong>60 flagged accounts a day (15,000+ over 12 months)</strong> across Google Wallet, Google Store, and YouTube Premium. I verified transaction patterns and payment documentation, and worked directly with Google engineers to feed real fraud patterns into automated detection models. Promoted twice in two years, recognized with a Best Reviewer Award.</p>
+          <p>I bring that same rigor to data analysis, backed by an <strong>M.S. in Business Analytics</strong> from Northern Arizona University. Outside my day-to-day work, I've built a full portfolio of independent projects, each one taken from raw, messy data all the way through to a finished dashboard or model. Every project is fully documented on GitHub: real code, real dashboards, real write-ups, not just slides.</p>
+        </div>
+        <ul class="about__facts">
+          <li><span class="about__facts-k mono">Focus</span><span class="about__facts-v">Fraud &amp; risk analytics, BI dashboarding, forecasting</span></li>
+          <li><span class="about__facts-k mono">Stack</span><span class="about__facts-v">Power BI · Python · Excel · RapidMiner · DAX</span></li>
+          <li><span class="about__facts-k mono">Degree</span><span class="about__facts-v">M.S. Business Analytics — NAU</span></li>
+          <li><span class="about__facts-k mono">Awards</span><span class="about__facts-v">Best Reviewer · Promoted through 3 roles</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section class="section experience reveal" id="experience">
+      <div class="section__head">
+        <span class="section__kicker mono">02 / Experience</span>
+        <h2 class="section__title">Two years, three roles, one fraud program</h2>
+        <p class="section__lede">Promoted through all three roles below within two years at Wipro, on a Google-managed trust &amp; safety program. Recognized with a Best Reviewer Award.</p>
+      </div>
+
+      <ol class="timeline">
+        <li class="timeline__item">
+          <div class="timeline__marker" aria-hidden="true"></div>
+          <div class="timeline__card">
+            <div class="timeline__meta">
+              <span class="timeline__date mono">Dec 2021 – Dec 2022</span>
+              <span class="timeline__org">Wipro (Client: Google) · India</span>
+            </div>
+            <h3 class="timeline__role">Business Intelligence &amp; Payments Risk Analyst</h3>
+            <ul class="timeline__points">
+              <li>Analyzed 100+ transactions per case across an average of 60 flagged Google Wallet accounts daily (300/week, 15,000+ over 12 months), using transaction-monitoring and behavioral-anomaly signals to detect account takeover, refund/policy abuse, and payment-method fraud — including chargeback and dispute review when compromised accounts led to unauthorized charges.</li>
+              <li>Reviewed customer-submitted government-issued ID and payment-card documentation for post-closure account appeals, distinguishing genuine from fake or forged submissions, then applied the appropriate case action and communicated decisions in formal written guidance to support agents.</li>
+              <li>Extended fraud-review protocols to Google Store hardware launches (Pixel 7, Pixel Buds, Nest) and YouTube Premium subscription transactions, applying billing/shipping-address verification and payment-fraud detection logic.</li>
+              <li>Identified and escalated data-quality issues in case-management workflows, improving fraud-analytics reliability.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline__item">
+          <div class="timeline__marker" aria-hidden="true"></div>
+          <div class="timeline__card">
+            <div class="timeline__meta">
+              <span class="timeline__date mono">Dec 2022 – Jun 2023</span>
+              <span class="timeline__org">Wipro (Client: Google)</span>
+            </div>
+            <h3 class="timeline__role">Subject Matter Expert</h3>
+            <ul class="timeline__points">
+              <li>Promoted through competitive internal selection to audit escalated cases across a 20-person team, reviewing account history and prior analyst reasoning to correct misclassifications.</li>
+              <li>Conducted 1:1 quality-check reviews of associate case decisions, and led onboarding and shadowing for newly onboarded analysts.</li>
+              <li>Standardized review logic and detection-policy communication across the team. Shortlisted for Team Lead (B2) based on performance.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="timeline__item">
+          <div class="timeline__marker" aria-hidden="true"></div>
+          <div class="timeline__card">
+            <div class="timeline__meta">
+              <span class="timeline__date mono">Jun 2023 – Dec 2023</span>
+              <span class="timeline__org">Wipro (Client: Google) · GTFF</span>
+            </div>
+            <h3 class="timeline__role">Fraud Pattern Analyst, GTFF</h3>
+            <ul class="timeline__points">
+              <li>Selected into GTFF, a centralized trust &amp; fraud analytics function analyzing raw account-level data across Google Wallet, Store, and YouTube transactions to identify deeper fraud patterns beyond individual case review.</li>
+              <li>Analyzed payment methods, devices, and banking sources to identify deeper fraud patterns; collaborated with Google engineers to feed findings into automated detection models, improving detection speed for newly identified fraud typologies.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== Projects ===== -->
+    <section class="section projects reveal" id="projects">
+      <div class="section__head">
+        <span class="section__kicker mono">03 / Projects</span>
+        <h2 class="section__title">Four projects, each taken from raw data to finished work</h2>
+        <p class="section__lede">Every card links to a real, fully-documented GitHub repository — real code, real dashboards, real write-ups. Hover or focus a card to see a chart pulled straight from that repo.</p>
+      </div>
+
+      <div class="projects__grid">
+        <!-- Project 1 -->
+        <article class="pcard" tabindex="0">
+          <div class="pcard__media">
+            <img src="assets/nyc_dashboard.png" alt="NYC Air Quality annual Power BI dashboard showing pollution trends by district and year" loading="lazy" />
+          </div>
+          <div class="pcard__body">
+            <h3 class="pcard__title">NYC Air Quality Analytics &amp; Forecasting</h3>
+            <p class="pcard__desc">15 years of NYC Department of Health air-quality data (~18,800 records, 59 community districts), focused on NO₂ and PM2.5. Cleaned in Excel and Power Query, analyzed with statistical hypothesis testing in Python, modeled with Decision Tree, Random Forest, and Linear Regression in RapidMiner (<span class="mono">R² up to 0.78</span>). Delivered as a multi-page Power BI dashboard and infographic poster, presented live to <span class="mono">90+</span> people.</p>
+            <div class="pcard__tags">
+              <span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">RapidMiner</span>
+            </div>
+            <div class="pcard__links">
+              <a href="https://github.com/aitharajuvamshi-cell/nyc-air-quality-analytics/" target="_blank" rel="noopener">
+                <span class="ico" aria-hidden="true">↗</span> Repository
+              </a>
+              <a href="https://github.com/aitharajuvamshi-cell/nyc-air-quality-analytics/tree/main/assets" target="_blank" rel="noopener">
+                <span class="ico" aria-hidden="true">▤</span> Charts &amp; assets
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="pcard" tabindex="0">
+          <div class="pcard__media">
+            <img src="assets/coffee_profit.png" alt="Coffee shop profit-by-product-type pie chart from the Power BI dashboard" loading="lazy" />
+          </div>
+          <div class="pcard__body">
+            <h3 class="pcard__title">Coffee Shop Sales Analysis &amp; KPI Dashboarding</h3>
+            <p class="pcard__desc">Cleaned transactional sales data in Power Query, designed a star-schema data model (Orders, Customers, Products), and built a Power BI dashboard with DAX measures. Found basic drinks drove <span class="mono">53.76%</span> of total profit, and gift-card payments carried the highest average profit per order (<span class="mono">$8.57</span> vs. <span class="mono">$7.14</span>).</p>
+            <div class="pcard__tags">
+              <span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">DAX</span>
+            </div>
+            <div class="pcard__links">
+              <a href="https://github.com/aitharajuvamshi-cell/power-bi-analytics/" target="_blank" rel="noopener">
+                <span class="ico" aria-hidden="true">↗</span> Repository
+              </a>
+              <a href="https://github.com/aitharajuvamshi-cell/power-bi-analytics/tree/main/assets" target="_blank" rel="noopener">
+                <span class="ico" aria-hidden="true">▤</span> Charts &amp; assets
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="pcard" tabindex="0">
+          <div class="pcard__media">
+            <img src="assets/vrinda_dashboard.png" alt="Vrinda Store interactive Excel dashboard with linked pivot charts and slicers" loading="lazy" />
+          </div>
+          <div class="pcard__body">
+            <h3 class="pcard__title">E-Commerce Sales Analysis (Vrinda Store)</h3>
+            <p class="pcard__desc">Cleaned ~31,000 e-commerce order records across multiple sales channels. Built an interactive Excel dashboard with linked pivot charts and slicers. Found a <span class="mono">64%</span> revenue share from women's apparel, with Amazon and Myntra driving over half of all order volume.</p>
+            <div class="pcard__tags">
+              <span class="tag">Excel</span><span class="tag">Pivot Tables</span><span class="tag">Dashboard Design</span>
+            </div>
+            <div class="pcard__links">
+              <a href="https://github.com/aitharajuvamshi-cell/vrinda-store-data-analysis/" target="_blank" rel="noopener">
+                <span class="ico" aria-hidden="true">↗</span> Repository
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="pcard" tabindex="0">
+          <div class="pcard__media">
+            <img src="assets/surplus_risk.png" alt="Surplus to Serve risk register chart scoring ten project risks by probability and impact" loading="lazy" />
+          </div>
+          <div class="pcard__body">
+            <h3 class="pcard__title">Surplus to Serve — Project Management</h3>
+            <p class="pcard__desc">Led a 4-person team as Project Manager on a full-lifecycle plan to reduce campus food waste. Authored the charter, scope, WBS, and schedule; built a RACI matrix, a <span class="mono">10-item</span> risk register, and a stakeholder analysis across <span class="mono">11</span> groups. Tracked execution through two progress reports, maintaining on-time, green status throughout.</p>
+            <div class="pcard__tags">
+              <span class="tag">Microsoft Project</span><span class="tag">RACI</span><span class="tag">Risk Registers</span>
+            </div>
+            <div class="pcard__links">
+              <a href="https://github.com/aitharajuvamshi-cell/surplus-to-serve-project-management/" target="_blank" rel="noopener">
+                <span class="ico" aria-hidden="true">↗</span> Repository
+              </a>
+              <a href="https://github.com/aitharajuvamshi-cell/surplus-to-serve-project-management/tree/main/assets" target="_blank" rel="noopener">
+                <span class="ico" aria-hidden="true">▤</span> Charts &amp; assets
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Skills ===== -->
+    <section class="section skills reveal" id="skills">
+      <div class="section__head">
+        <span class="section__kicker mono">04 / Skills</span>
+        <h2 class="section__title">What I work with</h2>
+      </div>
+      <div class="skills__grid">
+        <div class="skillgroup">
+          <h3 class="skillgroup__title">Data Analysis</h3>
+          <ul class="skillgroup__list">
+            <li>Exploratory Data Analysis</li>
+            <li>Hypothesis Testing</li>
+            <li>Regression</li>
+            <li>Predictive Modeling</li>
+            <li>Forecasting</li>
+          </ul>
+        </div>
+        <div class="skillgroup">
+          <h3 class="skillgroup__title">Tools</h3>
+          <ul class="skillgroup__list">
+            <li>Python</li>
+            <li>Excel</li>
+            <li>Power Query</li>
+            <li>RapidMiner</li>
+            <li>Git &amp; GitHub</li>
+          </ul>
+        </div>
+        <div class="skillgroup">
+          <h3 class="skillgroup__title">BI &amp; Visualization</h3>
+          <ul class="skillgroup__list">
+            <li>Power BI</li>
+            <li>DAX</li>
+            <li>Tableau</li>
+            <li>Data Storytelling</li>
+          </ul>
+        </div>
+        <div class="skillgroup">
+          <h3 class="skillgroup__title">Fraud &amp; Risk</h3>
+          <ul class="skillgroup__list">
+            <li>Account Takeover Detection</li>
+            <li>Transaction Monitoring</li>
+            <li>Chargeback &amp; Dispute Review</li>
+          </ul>
+        </div>
+        <div class="skillgroup skillgroup--risk">
+          <h3 class="skillgroup__title">Project Management</h3>
+          <ul class="skillgroup__list skillgroup__list--risk">
+            <li data-risk="high">Project Charters</li>
+            <li data-risk="medium">RACI Matrices</li>
+            <li data-risk="high">Risk Registers</li>
+            <li data-risk="low">Microsoft Project</li>
+          </ul>
+          <div class="risk-legend" aria-label="Risk-matrix legend, a nod to the Surplus to Serve risk register">
+            <span class="risk-legend__title mono">Risk register key</span>
+            <span class="risk-legend__item"><i class="rdot rdot--low"></i>Low</span>
+            <span class="risk-legend__item"><i class="rdot rdot--medium"></i>Medium</span>
+            <span class="risk-legend__item"><i class="rdot rdot--high"></i>High</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Education ===== -->
+    <section class="section education reveal" id="education">
+      <div class="section__head">
+        <span class="section__kicker mono">05 / Education</span>
+        <h2 class="section__title">Education</h2>
+      </div>
+      <div class="edu__grid">
+        <div class="educard">
+          <div class="educard__top">
+            <h3 class="educard__degree">M.S. Business Analytics</h3>
+            <span class="educard__gpa mono">GPA 3.75</span>
+          </div>
+          <p class="educard__school">Northern Arizona University</p>
+        </div>
+        <div class="educard">
+          <div class="educard__top">
+            <h3 class="educard__degree">B.Com, Computers / Accounting</h3>
+            <span class="educard__gpa mono">GPA 3.50</span>
+          </div>
+          <p class="educard__school">Osmania University</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="section contact reveal" id="contact">
+      <div class="contact__inner">
+        <span class="section__kicker mono">06 / Contact</span>
+        <h2 class="contact__title">Let's talk data.</h2>
+        <p class="contact__lede">Open to Data Analyst roles and happy to relocate. The fastest way to reach me is email.</p>
+        <div class="contact__links">
+          <a class="contact__link" href="mailto:aitharajuvamshi@gmail.com">
+            <span class="contact__link-k mono">Email</span>
+            <span class="contact__link-v">aitharajuvamshi@gmail.com</span>
+          </a>
+          <a class="contact__link" href="tel:+19282668559">
+            <span class="contact__link-k mono">Phone</span>
+            <span class="contact__link-v">(928) 266-8559</span>
+          </a>
+          <a class="contact__link" href="https://www.linkedin.com/in/vamshiaitharaju/" target="_blank" rel="noopener">
+            <span class="contact__link-k mono">LinkedIn</span>
+            <span class="contact__link-v">in/vamshiaitharaju</span>
+          </a>
+          <a class="contact__link" href="https://github.com/aitharajuvamshi-cell/" target="_blank" rel="noopener">
+            <span class="contact__link-k mono">GitHub</span>
+            <span class="contact__link-v">aitharajuvamshi-cell</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer (dashboard status line) ===== -->
+  <footer class="footer">
+    <div class="footer__inner mono">
+      <span class="footer__status"><span class="status-dot" aria-hidden="true"></span>Last refreshed: <span id="footerDate">—</span></span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span>Portfolio v1.0</span>
+      <span class="footer__sep" aria-hidden="true">·</span>
+      <span>Data current through Dec 2023</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
