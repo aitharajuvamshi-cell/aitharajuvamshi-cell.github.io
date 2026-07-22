@@ -153,9 +153,29 @@ strong { color: var(--text); font-weight: 600; }
 
 .hero__inner {
   position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1.02fr 1.1fr; gap: clamp(28px, 5vw, 64px);
-  align-items: center;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+  min-height: min(62vh, 520px);
 }
+.hero__text { max-width: 48rem; width: 100%; }
+
+.hero__scroll {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 10px;
+  margin-top: clamp(32px, 5vw, 52px); align-self: flex-start;
+  color: var(--text-mute); font-size: 0.68rem; letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 600;
+  transition: color 0.2s var(--ease);
+}
+.hero__scroll:hover { color: var(--text-dim); }
+.hero__scroll-line {
+  width: 2px; height: 46px; border-radius: 2px; background: var(--line);
+  position: relative; overflow: hidden;
+}
+.hero__scroll-line::after {
+  content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 45%;
+  border-radius: 2px; background: var(--accent);
+  animation: scrollcue 1.9s var(--ease) infinite; transition: background 0.5s var(--ease);
+}
+@keyframes scrollcue { 0% { transform: translateY(-110%); } 100% { transform: translateY(340%); } }
 .hero__eyebrow {
   display: inline-flex; align-items: center; gap: 9px;
   color: var(--text-dim); font-size: 0.86rem; font-weight: 500;
@@ -353,7 +373,41 @@ strong { color: var(--text); font-weight: 600; }
 /* ============================================================
    Projects
    ============================================================ */
-.projects__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(20px, 3vw, 28px); }
+.projects__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(20px, 3vw, 28px); }
+
+/* Featured project — NYC Air Quality with the live interactive chart.
+   .pcard.pcard--featured keeps specificity above the base .pcard rules. */
+.pcard.pcard--featured {
+  display: grid; grid-template-columns: 1fr 1.12fr; gap: clamp(24px, 4vw, 48px);
+  align-items: center; overflow: visible;
+  padding: clamp(22px, 3vw, 36px);
+  margin-bottom: clamp(22px, 3vw, 30px);
+  border-color: var(--accent-line);
+}
+.pcard.pcard--featured:hover { transform: none; box-shadow: 0 26px 55px -32px rgba(0,0,0,0.9); }
+.pcard--featured .pcard__body { padding: 0; }
+.pcard--featured .pcard__title { font-size: clamp(1.4rem, 2.4vw, 1.95rem); margin-bottom: 14px; }
+.pcard--featured .pcard__links { border-top: 0; padding-top: 4px; }
+.pcard--featured .chartcard { background: transparent; border: 0; box-shadow: none; padding: 0; }
+.pcard__chart { min-width: 0; }
+
+.pcard__badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.66rem; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 600;
+  color: var(--accent); background: var(--accent-soft);
+  padding: 5px 11px; border-radius: 999px; margin-bottom: 16px;
+  transition: color 0.5s var(--ease), background 0.5s var(--ease);
+}
+.pcard__badge-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex: none;
+  transition: background 0.5s var(--ease);
+}
+.pcard__hint {
+  font-size: 0.86rem; color: var(--text-dim); font-style: italic;
+  margin: 0 0 18px; padding-left: 13px; border-left: 2px solid var(--accent-line);
+  transition: border-color 0.5s var(--ease);
+}
+
 .pcard {
   position: relative; display: flex; flex-direction: column;
   background: var(--bg-1); border: 1px solid var(--line-soft); border-radius: var(--radius);
@@ -492,8 +546,7 @@ strong { color: var(--text); font-weight: 600; }
    Responsive
    ============================================================ */
 @media (max-width: 940px) {
-  .hero__inner { grid-template-columns: 1fr; }
-  .hero__chart { order: 2; }
+  .pcard.pcard--featured { grid-template-columns: 1fr; gap: clamp(20px, 4vw, 32px); }
   .hero__tagline { min-height: 3.6em; }
   .about__grid { grid-template-columns: 1fr; }
   .stats__inner { grid-template-columns: repeat(2, 1fr); gap: 28px 32px; }

@@ -92,28 +92,10 @@
           </div>
         </div>
 
-        <div class="hero__chart">
-          <div class="chartcard">
-            <div class="chartcard__head">
-              <div class="chartcard__titles">
-                <p class="chartcard__title">NYC Pollution Trend</p>
-                <p class="chartcard__sub" id="chartSub">Annual average · 2009–2023 · µg/m³</p>
-              </div>
-              <div class="seg" role="tablist" aria-label="Season view">
-                <button class="seg__btn is-active" role="tab" aria-selected="true" data-season="annual">Annual</button>
-                <button class="seg__btn" role="tab" aria-selected="false" data-season="winter">Winter</button>
-                <button class="seg__btn" role="tab" aria-selected="false" data-season="summer">Summer</button>
-              </div>
-            </div>
-            <div class="chartcard__plot">
-              <svg id="heroChart" viewBox="0 0 640 340" role="img" aria-labelledby="heroChartTitle heroChartDesc" preserveAspectRatio="xMidYMid meet">
-                <title id="heroChartTitle">NYC air quality pollution trend, 2009 to 2023</title>
-                <desc id="heroChartDesc">Line chart recreated from the real NYC Department of Health dataset, showing nitrogen dioxide and fine-particle concentrations declining over fifteen years.</desc>
-              </svg>
-            </div>
-            <div class="chartcard__legend" id="chartLegend"></div>
-          </div>
-        </div>
+        <a href="#stats" class="hero__scroll" aria-label="Scroll to career highlights">
+          <span class="hero__scroll-text mono">Scroll</span>
+          <span class="hero__scroll-line" aria-hidden="true"></span>
+        </a>
       </div>
     </section>
 
@@ -223,32 +205,53 @@
       <div class="section__head">
         <span class="section__kicker mono">03 / Projects</span>
         <h2 class="section__title">Four projects, each taken from raw data to finished work</h2>
-        <p class="section__lede">Every card links to a real, fully-documented GitHub repository — real code, real dashboards, real write-ups. Hover or focus a card to see a chart pulled straight from that repo.</p>
+        <p class="section__lede">Every card links to a real, fully-documented GitHub repository — real code, real dashboards, real write-ups. The featured project below is interactive: switch the season to redraw the chart with real data. Hover or focus the other cards to see a chart pulled straight from each repo.</p>
       </div>
 
-      <div class="projects__grid">
-        <!-- Project 1 -->
-        <article class="pcard" tabindex="0">
-          <div class="pcard__media">
-            <img src="assets/nyc_dashboard.png" alt="NYC Air Quality annual Power BI dashboard showing pollution trends by district and year" loading="lazy" />
+      <!-- Featured project: NYC Air Quality (live interactive chart) -->
+      <article class="pcard pcard--featured">
+        <div class="pcard__body">
+          <span class="pcard__badge mono"><span class="pcard__badge-dot" aria-hidden="true"></span>Featured · Interactive</span>
+          <h3 class="pcard__title">NYC Air Quality Analytics &amp; Forecasting</h3>
+          <p class="pcard__desc">15 years of NYC Department of Health air-quality data (~18,800 records, 59 community districts), focused on NO₂ and PM2.5. Cleaned in Excel and Power Query, analyzed with statistical hypothesis testing in Python, modeled with Decision Tree, Random Forest, and Linear Regression in RapidMiner (<span class="mono">R² up to 0.78</span>). Delivered as a multi-page Power BI dashboard and infographic poster, presented live to <span class="mono">90+</span> people.</p>
+          <p class="pcard__hint">Switch the season on the chart — it redraws with the real annual, winter, and summer figures, and the site's accent shifts with it.</p>
+          <div class="pcard__tags">
+            <span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">RapidMiner</span>
           </div>
-          <div class="pcard__body">
-            <h3 class="pcard__title">NYC Air Quality Analytics &amp; Forecasting</h3>
-            <p class="pcard__desc">15 years of NYC Department of Health air-quality data (~18,800 records, 59 community districts), focused on NO₂ and PM2.5. Cleaned in Excel and Power Query, analyzed with statistical hypothesis testing in Python, modeled with Decision Tree, Random Forest, and Linear Regression in RapidMiner (<span class="mono">R² up to 0.78</span>). Delivered as a multi-page Power BI dashboard and infographic poster, presented live to <span class="mono">90+</span> people.</p>
-            <div class="pcard__tags">
-              <span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">RapidMiner</span>
-            </div>
-            <div class="pcard__links">
-              <a href="https://github.com/aitharajuvamshi-cell/nyc-air-quality-analytics/" target="_blank" rel="noopener">
-                <span class="ico" aria-hidden="true">↗</span> Repository
-              </a>
-              <a href="https://github.com/aitharajuvamshi-cell/nyc-air-quality-analytics/tree/main/assets" target="_blank" rel="noopener">
-                <span class="ico" aria-hidden="true">▤</span> Charts &amp; assets
-              </a>
-            </div>
+          <div class="pcard__links">
+            <a href="https://github.com/aitharajuvamshi-cell/nyc-air-quality-analytics/" target="_blank" rel="noopener">
+              <span class="ico" aria-hidden="true">↗</span> Repository
+            </a>
+            <a href="https://github.com/aitharajuvamshi-cell/nyc-air-quality-analytics/tree/main/assets" target="_blank" rel="noopener">
+              <span class="ico" aria-hidden="true">▤</span> Charts &amp; assets
+            </a>
           </div>
-        </article>
+        </div>
+        <div class="pcard__chart">
+          <div class="chartcard">
+            <div class="chartcard__head">
+              <div class="chartcard__titles">
+                <p class="chartcard__title">NYC Pollution Trend</p>
+                <p class="chartcard__sub" id="chartSub">Annual average · 2009–2023 · µg/m³</p>
+              </div>
+              <div class="seg" role="tablist" aria-label="Season view">
+                <button class="seg__btn is-active" role="tab" aria-selected="true" data-season="annual">Annual</button>
+                <button class="seg__btn" role="tab" aria-selected="false" data-season="winter">Winter</button>
+                <button class="seg__btn" role="tab" aria-selected="false" data-season="summer">Summer</button>
+              </div>
+            </div>
+            <div class="chartcard__plot">
+              <svg id="heroChart" viewBox="0 0 640 340" role="img" aria-labelledby="heroChartTitle heroChartDesc" preserveAspectRatio="xMidYMid meet">
+                <title id="heroChartTitle">NYC air quality pollution trend, 2009 to 2023</title>
+                <desc id="heroChartDesc">Line chart recreated from the real NYC Department of Health dataset, showing nitrogen dioxide and fine-particle concentrations declining over fifteen years.</desc>
+              </svg>
+            </div>
+            <div class="chartcard__legend" id="chartLegend"></div>
+          </div>
+        </div>
+      </article>
 
+      <div class="projects__grid">
         <!-- Project 2 -->
         <article class="pcard" tabindex="0">
           <div class="pcard__media">

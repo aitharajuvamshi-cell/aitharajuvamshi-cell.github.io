@@ -368,12 +368,25 @@
   }
 
   /* ---------- Init ---------- */
-  // Render immediately (static), then animate in once fonts/layout settle.
+  // Render immediately (static) so the chart is never blank.
   render("annual", false);
-  window.addEventListener("load", function () {
-    // Re-render annual with the draw-in animation.
-    render("annual", true);
-    typewriter();
-  });
+
+  // The chart now lives in the Projects section, so draw it in when it
+  // scrolls into view rather than on page load.
+  var chartAnimated = false;
+  var chartObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !chartAnimated) {
+        chartAnimated = true;
+        // Only replay the draw-in if the user hasn't already switched seasons.
+        if (currentSeason === "annual") render("annual", true);
+        chartObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+  if (svg) chartObserver.observe(svg);
+
+  // Typewriter tagline runs on load (it's in the hero, above the fold).
+  window.addEventListener("load", typewriter);
 
 })();
