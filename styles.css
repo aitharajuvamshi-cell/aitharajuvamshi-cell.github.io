@@ -586,6 +586,62 @@ strong { color: var(--text); font-weight: 600; }
 /* ============================================================
    Reduced motion
    ============================================================ */
+/* ============================================================
+   Engagement & orientation layer
+   ============================================================ */
+
+/* Reading-progress bar — a goal-gradient cue that there's an end in
+   sight, which nudges visitors to keep scrolling to it. */
+.scrollbar {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 101;
+  background: transparent; pointer-events: none;
+}
+.scrollbar__fill {
+  display: block; height: 100%; width: 0;
+  background: var(--accent); box-shadow: 0 0 12px var(--accent-line);
+  transition: background 0.5s var(--ease);
+}
+
+/* Hero proof strip — social proof + authority, on the first screen
+   where the impression is formed. */
+.hero__proof {
+  list-style: none; margin: 26px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 10px;
+  font-size: 0.76rem; color: var(--text-dim);
+}
+.hero__proof li {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 12px; border: 1px solid var(--line-soft); border-radius: 999px;
+  background: var(--bg-1);
+}
+.hero__proof-n { color: var(--accent); font-weight: 700; transition: color 0.5s var(--ease); }
+
+/* Scroll-spy — the current section stays lit in the nav, giving a
+   constant sense of place (cognitive fluency, lower bounce). */
+.nav__links a { position: relative; }
+.nav__links a.is-current { color: var(--text); }
+.nav__links a.is-current:not(.nav__cta)::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px;
+  height: 2px; border-radius: 2px; background: var(--accent);
+  transition: background 0.5s var(--ease);
+}
+.nav__cta.is-current { border-color: var(--accent-line); background: var(--accent-soft); }
+
+/* Back-to-top — low-friction return so a hooked visitor can re-read. */
+.to-top {
+  position: fixed; right: clamp(16px, 3vw, 32px); bottom: clamp(16px, 3vw, 32px);
+  z-index: 90; width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer;
+  color: #0B0E12; background: var(--accent); border: none;
+  box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.8);
+  opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.9);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease),
+              visibility 0.25s var(--ease), background 0.5s var(--ease);
+}
+.to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+.to-top:hover { transform: translateY(-2px) scale(1.05); }
+.to-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;

@@ -22,6 +22,9 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Reading-progress bar (goal-gradient cue) -->
+  <div class="scrollbar" aria-hidden="true"><span class="scrollbar__fill" id="scrollFill"></span></div>
+
   <!-- ===== Nav ===== -->
   <header class="nav" id="nav">
     <div class="nav__inner">
@@ -90,6 +93,11 @@
             <a href="#projects" class="btn btn--primary">View Projects</a>
             <a href="#contact" class="btn btn--ghost">Get in Touch</a>
           </div>
+          <ul class="hero__proof mono" aria-label="Career highlights">
+            <li><span class="hero__proof-n">3&times;</span> promoted in 2 years</li>
+            <li><span class="hero__proof-n">&#9733;</span> Best Reviewer Award</li>
+            <li><span class="hero__proof-n">M.S.</span> Business Analytics &middot; NAU</li>
+          </ul>
         </div>
 
         <a href="#stats" class="hero__scroll" aria-label="Scroll to career highlights">
@@ -441,6 +449,12 @@
       <span>Data current through Dec 2023</span>
     </div>
   </footer>
+
+  <button class="to-top" id="toTop" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+      <path d="M12 19V5M12 5l-6 6M12 5l6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
 
   <script src="main.js"></script>
 </body>

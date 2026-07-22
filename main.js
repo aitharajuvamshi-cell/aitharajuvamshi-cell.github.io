@@ -360,6 +360,64 @@
     });
   });
 
+  /* ---------- Scroll-spy: light the current section in the nav ---------- */
+  var spyLinks = {};
+  document.querySelectorAll(".nav__links a, .nav__mobile a").forEach(function (a) {
+    var href = a.getAttribute("href") || "";
+    if (href.charAt(0) === "#" && href.length > 1) {
+      var key = href.slice(1);
+      (spyLinks[key] = spyLinks[key] || []).push(a);
+    }
+  });
+  var spyIds = ["about", "experience", "projects", "skills", "education", "contact"];
+  var currentSpy = null;
+  function setCurrent(id) {
+    if (id === currentSpy) return;
+    currentSpy = id;
+    spyIds.forEach(function (sid) {
+      (spyLinks[sid] || []).forEach(function (a) {
+        a.classList.toggle("is-current", sid === id);
+      });
+    });
+  }
+  var spyObserver = new IntersectionObserver(function (entries) {
+    // Skip when pinned to the very bottom — short trailing sections can
+    // never reach the viewport's center band, so onScrollUI owns that case.
+    if (atBottom()) return;
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) setCurrent(entry.target.id);
+    });
+  }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+  spyIds.forEach(function (sid) {
+    var el = document.getElementById(sid);
+    if (el) spyObserver.observe(el);
+  });
+
+  /* ---------- Reading progress + back-to-top ---------- */
+  var scrollFill = document.getElementById("scrollFill");
+  var toTop = document.getElementById("toTop");
+  function atBottom() {
+    var doc = document.documentElement;
+    return window.scrollY + doc.clientHeight >= doc.scrollHeight - 4;
+  }
+  function onScrollUI() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    var p = max > 0 ? (window.scrollY / max) * 100 : 0;
+    if (scrollFill) scrollFill.style.width = p.toFixed(2) + "%";
+    if (toTop) toTop.classList.toggle("is-visible", window.scrollY > 600);
+    // At the foot of the page, force the last section active.
+    if (atBottom()) setCurrent(spyIds[spyIds.length - 1]);
+  }
+  window.addEventListener("scroll", onScrollUI, { passive: true });
+  window.addEventListener("resize", onScrollUI);
+  onScrollUI();
+  if (toTop) {
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  }
+
   /* ---------- Footer date ---------- */
   var footerDate = document.getElementById("footerDate");
   if (footerDate) {
