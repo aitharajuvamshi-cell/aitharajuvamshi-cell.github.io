@@ -425,6 +425,55 @@
     footerDate.textContent = now.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
   }
 
+  /* ---------- Click tracking → GA4 + Clarity ---------- */
+  // Fires a named event into both analytics tools; safe if either is absent.
+  function track(name, params) {
+    try { if (typeof window.gtag === "function") window.gtag("event", name, params || {}); } catch (e) {}
+    try {
+      if (typeof window.clarity === "function") {
+        window.clarity("event", name);
+        if (params) {
+          Object.keys(params).forEach(function (k) {
+            try { window.clarity("set", k, String(params[k])); } catch (e) {}
+          });
+        }
+      }
+    } catch (e) {}
+  }
+
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+
+    // A project's GitHub link (repo or assets folder) — tells you which
+    // project a visitor opened on GitHub.
+    var card = a.closest(".pcard");
+    if (card && /github\.com/i.test(href)) {
+      var titleEl = card.querySelector(".pcard__title");
+      var project = titleEl ? titleEl.textContent.trim() : "unknown";
+      var linkType = /\/tree\/|\/assets/i.test(href) ? "assets" : "repo";
+      track("project_link_click", { project: project, link_type: linkType, link_url: href });
+      return;
+    }
+
+    // Contact-section clicks (email / phone / LinkedIn / GitHub profile).
+    if (a.closest(".contact__links")) {
+      var method = href.indexOf("mailto:") === 0 ? "email"
+        : href.indexOf("tel:") === 0 ? "phone"
+        : /linkedin\.com/i.test(href) ? "linkedin"
+        : /github\.com/i.test(href) ? "github"
+        : "other";
+      track("contact_click", { method: method });
+      return;
+    }
+
+    // Any other outbound GitHub link.
+    if (/github\.com/i.test(href)) {
+      track("github_click", { link_url: href });
+    }
+  }, true);
+
   /* ---------- Init ---------- */
   // Render immediately (static) so the chart is never blank.
   render("annual", false);
